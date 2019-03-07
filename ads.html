@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- s:premium head -->
+		<div class="dropdown dropdown2" id="timer">
+			<link rel="stylesheet" href="css/styles.css" type="text/css">
+			<script src="js/jquery.min.js"></script>
+			<div class="banner-up">
+				<img class="banner-up--bg"src="images/970x90.jpg" alt="">
+				<a class="banner-up--link" href="http://f11pro.oppomobile.id/?utm_source=kompashome_desktop&utm_medium=banner&utm_campaign=oppof11pro&utm_content=premium_head" target="_blank"></a>
+			</div>
+			<div class="banner-down">
+				<img src="images/970x250.jpg" alt="">
+				<a class="banner-down--link" href="http://f11pro.oppomobile.id/?utm_source=kompashome_desktop&utm_medium=banner&utm_campaign=oppof11pro&utm_content=premium_head" target="_blank"></a>
+				<div id="ytplayer"></div>
+			</div>
+		</div>
+		<div class="clearit"></div>
+		<!-- end: drop downa banner -->
+		<script type="text/javascript" src="js/panel_002.js"></script>
+		<script src="js/countdown.js" type="text/javascript"></script>
+
+		<script type="text/javascript" charset="utf-8">
+			var tag = document.createElement('script');
+			tag.src = "https://www.youtube.com/player_api";
+			var firstScriptTag = document.getElementsByTagName('script')[0];
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+			// 3. This function creates an <iframe> (and YouTube player)
+			//    after the API code downloads.
+			var player;
+			function onYouTubePlayerAPIReady() {
+				player = new YT.Player('ytplayer', {
+					playerVars: {
+					'autoplay': 1,
+					'controls': 1,
+					'autohide':1,
+					'wmode':'opaque',
+					'showinfo': 0,
+					'loop': 1,
+					'playlist': 'j11DDVMgbEk'
+				},
+					videoId: 'j11DDVMgbEk',
+					events: {
+						'onReady': onPlayerReady}
+				});
+			}
+
+		function onPlayerReady(event) {
+			event.target.mute();
+		}
+		function stopVideo() {
+
+		}
+		if(top!=self){ window.frameElement.style = 'height:250px;width:970px; -webkit-transition:all 0.5s ease;	  -moz-transition:all 0.5s ease;-ms-transition:all 0.5s ease;	 -o-transition:all 0.5s ease; transition:all 0.5s ease;'}
+		$('.dropdown').animate({'height':'250px'},"slow");
+		$('.banner-up').animate({'height':'0px'},"slow");
+		$('.close-dropdown').fadeIn('slow');
+		$('.close-time').fadeIn(5000);
+		var currentDate = new Date();
+		$('#timer').countdown(20 * 1000 + currentDate.valueOf(), function(event) {
+		$this = $(this);
+		switch(event.type) {
+			case "seconds":
+			case "minutes":
+			case "hours":
+			case "days":
+			case "weeks":
+			case "daysLeft":
+				$this.find('span#'+event.type).html(event.value);
+				break;
+			case "finished":
+				$('.dropdown').animate({'height':'90px'},"slow");
+				$('.banner-up').animate({'height':'90px'},"slow");
+				if(top!=self){ window.frameElement.style = 'height:90px;width:970px; -webkit-transition:all 0.5s ease;	  -moz-transition:all 0.5s ease;-ms-transition:all 0.5s ease;	 -o-transition:all 0.5s ease; transition:all 0.5s ease;'}
+				$('.close-dropdown').fadeOut('fast');
+				$('.open-dropdown').fadeIn('slow');
+				$('.video-dropdown').hide();
+				$('.close-time').fadeOut('fast');
+				player.pauseVideo();
+						break;
+				}
+		});
+		$('.banner-up').hover(function() {
+			$('.dropdown').animate({'height':'250px'},"slow");
+			$('.banner-up').animate({'height':'0px'},"slow");
+			if(top!=self){ window.frameElement.style.height = '250px'; }
+			player.playVideo();
+			$('.banner-down iframe').each(function() {
+				//this.contentWindow.location.reload(true);
+			});
+		});
+		$('.dropdown').mouseleave(function() {
+			if(top!=self){ window.frameElement.style.height = '90px'; }
+			$('.banner-up').animate({'height':'90px'},"slow");
+			$('.dropdown2').animate({'height':'90px'},"slow");
+				player.pauseVideo();
+			$('.banner-up iframe').each(function() {
+				//this.contentWindow.location.reload(true);
+			});
+		});
+		</script>	<!-- e : countdown -->
+		<!-- e:premium head -->
+	</body>
+</html>
